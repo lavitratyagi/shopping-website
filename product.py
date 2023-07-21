@@ -2,7 +2,7 @@ import mysql.connector
 
 # Connect to the database (replace the placeholders with your database details)
 db = mysql.connector.connect(
-    host='your_database_host',
+    host='your_',
     user='your_database_user',
     password='your_database_password',
     database='your_database_name'
