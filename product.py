@@ -1,8 +1,9 @@
 import mysql.connector
+from flask import Flask, render_template
 
 # Connect to the database (replace the placeholders with your database details)
 db = mysql.connector.connect(
-    host='your_',
+    host='your_database_host',
     user='your_database_user',
     password='your_database_password',
     database='your_database_name'
@@ -21,3 +22,12 @@ product_data = cursor.fetchall()
 # Close the cursor and database connection
 cursor.close()
 db.close()
+
+app = Flask(__name__)
+@app.route('/')
+def display_data():
+    global product_data
+    return render_template('home.html', data_list=product_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
