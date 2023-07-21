@@ -2,7 +2,7 @@ import mysql.connector
 from flask import Flask, render_template
 
 # Connect to the database (replace the placeholders with your database details)
-db = mysql.connector.connect(
+database = mysql.connector.connect(
     host='your_database_host',
     user='your_database_user',
     password='your_database_password',
@@ -10,7 +10,7 @@ db = mysql.connector.connect(
 )
 
 # Create a cursor to execute SQL queries
-cursor = db.cursor()
+cursor = database.cursor()
 
 # SQL query to select product data from the table
 query = "SELECT name, price, description FROM products"
@@ -21,7 +21,7 @@ product_data = cursor.fetchall()
 
 # Close the cursor and database connection
 cursor.close()
-db.close()
+database.close()
 
 app = Flask(__name__)
 @app.route('/')
